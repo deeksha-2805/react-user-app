@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUsers } from '../services/api';
+import axios from 'axios';
 
 function Users() {
     const [users, setUsers] = useState([]);
@@ -17,9 +18,14 @@ function Users() {
         //  };
         //  fetchUsers();
         
-        fetch("https://jsonplaceholder.typicode.com/users")
-        .then(response=> response.json())
-        .then(data => setUsers(data));
+        // fetch("https://jsonplaceholder.typicode.com/users")
+        // .then(response=> response.json())
+        // .then(data => setUsers(data));
+
+
+        axios.get("https://jsonplaceholder.typicode.com/users")
+        .then(response => setUsers(response.data));
+
 
     },[]);
 
